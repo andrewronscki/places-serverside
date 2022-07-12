@@ -1,0 +1,27 @@
+{
+  "requiresCompatibilities": ["FARGATE"],
+  "containerDefinitions": [{
+    "name": "authentication-service",
+    "essential": true,
+    "memoryReservation": "",
+    "portMappings": [{
+      "protocol": "tcp",
+      "containerPort": 80,
+      "hostPort": 80
+    }],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "/ecs/authentication-service-dev",
+        "awslogs-region": "us-east-2",
+        "awslogs-stream-prefix": "ecs"
+      }
+    }
+  }],
+  "family": "authentication-td-dev",
+  "networkMode": "awsvpc",
+  "memory": "512",
+  "cpu": "256",
+  "taskRoleArn": "arn:aws:iam::501254753063:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::501254753063:role/ecsTaskExecutionRole"
+}
