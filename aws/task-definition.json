@@ -1,7 +1,7 @@
 {
   "requiresCompatibilities": ["FARGATE"],
   "containerDefinitions": [{
-    "name": "authentication-service",
+    "name": "places-service",
     "essential": true,
     "memoryReservation": "",
     "portMappings": [{
@@ -12,13 +12,13 @@
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
-        "awslogs-group": "/ecs/authentication-service-dev",
-        "awslogs-region": "us-east-2",
+        "awslogs-group": "/ecs/places-service",
+        "awslogs-region": "us-east-1",
         "awslogs-stream-prefix": "ecs"
       }
     }
   }],
-  "family": "authentication-td-dev",
+  "family": "places-service-td",
   "networkMode": "awsvpc",
   "memory": "512",
   "cpu": "256",
