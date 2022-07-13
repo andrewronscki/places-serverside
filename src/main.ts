@@ -5,14 +5,13 @@ import { AppModule, HttpExceptionFilter } from '@/shared/presenters';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
+  console.log(process.env);
   const app = await NestFactory.create(AppModule);
   app.enableVersioning({
     type: VersioningType.URI,
     prefix: 'api/v',
     defaultVersion: '1',
   });
-
-  console.log(process.env);
 
   app.useGlobalFilters(new HttpExceptionFilter());
   app.useGlobalPipes(new ValidationPipe());
