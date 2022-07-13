@@ -41,7 +41,7 @@ Tabela de conteúdos
 
 É uma API rest que permita o CRUD de lugares para se conhecer ao redor do mundo para alimentar seu clientside.
 
-Swagger da aplicação disponível em: http://api.places.andrewronscki.com/docs
+Swagger da aplicação disponível em: http://place-alb-1278546746.us-east-1.elb.amazonaws.com/docs
 
 ---
 
