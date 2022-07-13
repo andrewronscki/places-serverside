@@ -5,15 +5,6 @@ on:
 
 name: Pipeline
 
-env:
-  NODE_ENV: ${{secrets.NODE_ENV}}
-  APP_PORT: ${{secrets.APP_PORT}}
-  DB_URL: ${{secrets.DB_URL}}
-  DB_USER: ${{secrets.DB_USER}}
-  DB_PASSWORD: ${{secrets.DB_PASSWORD}}
-  DB_PORT: ${{secrets.DB_PORT}}
-  DB_DATABASE: ${{secrets.DB_DATABASE}}
-
 jobs:
   build:
     name: build
@@ -37,15 +28,19 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
+      - name: create env file
+        run: |
+          touch .env
+          echo NODE_ENV=${{ secrets.NODE_ENV }} >> .env
+          echo APP_PORT=${{ secrets.APP_PORT }} >> .env
+          echo DB_URL=${{ secrets.DB_URL }} >> .env
+          echo DB_USER=${{ secrets.DB_USER }} >> .env
+          echo DB_PASSWORD=${{ secrets.DB_PASSWORD }} >> .env
+          echo DB_PORT=${{ secrets.DB_PORT }} >> .env
+          echo DB_DATABASE=${{ secrets.DB_DATABASE }} >> .env
+
       - name: Build image
         env:
-          NODE_ENV: $NODE_ENV
-          APP_PORT: $APP_PORT
-          DB_URL: $DB_URL
-          DB_USER: $DB_USER
-          DB_PASSWORD: $DB_PASSWORD
-          DB_PORT: $DB_PORT
-          DB_DATABASE: $DB_DATABASE
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: places-service
           IMAGE_TAG: ${{ steps.vars.outputs.sha_short }}
