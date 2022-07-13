@@ -43,6 +43,10 @@ Tabela de conteúdos
 
 Swagger da aplicação disponível em: http://api.places.andrewronscki.com/docs
 
+<div align="center">
+  <img alt="Swagger Places Api" src="./swagger.png">
+</div>
+
 ---
 
 ## ⚙️ Funcionalidades
