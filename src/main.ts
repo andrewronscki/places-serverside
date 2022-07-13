@@ -12,6 +12,8 @@ async function bootstrap() {
     defaultVersion: '1',
   });
 
+  console.log(process.env);
+
   app.useGlobalFilters(new HttpExceptionFilter());
   app.useGlobalPipes(new ValidationPipe());
 
