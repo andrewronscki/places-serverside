@@ -13,6 +13,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: set environment variables
+        uses: allenevans/set-env@v2.0.0
+        with:
+          NODE_ENV: ${{ secrets.NODE_ENV }}
+          APP_PORT: ${{ secrets.APP_PORT }}
+          DB_URL: ${{ secrets.DB_URL }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_DATABASE: ${{ secrets.DB_DATABASE }}
+
+      - name: Printenv
+        run: |
+          echo "DB_URL=${DB_URL}"
+          printenv
+
       - name: Set image tag
         id: vars
         run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
@@ -30,13 +46,6 @@ jobs:
 
       - name: Build image
         env:
-          NODE_ENV: ${{ secrets.NODE_ENV }}
-          APP_PORT: ${{ secrets.APP_PORT }}
-          DB_URL: ${{ secrets.DB_URL }}
-          DB_USER: ${{ secrets.DB_USER }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          DB_PORT: ${{ secrets.DB_PORT }}
-          DB_DATABASE: ${{ secrets.DB_DATABASE }}
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: places-service
           IMAGE_TAG: ${{ steps.vars.outputs.sha_short }}
