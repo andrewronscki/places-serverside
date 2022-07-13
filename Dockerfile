@@ -14,8 +14,6 @@ FROM development AS build
 
 RUN npm run build
 
-COPY .env ./dist
-
 ## Production
 FROM node:16 AS production
 
