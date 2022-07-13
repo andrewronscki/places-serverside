@@ -13,6 +13,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: create env file
+        run: |
+          touch .env
+          echo NODE_ENV=${{ secrets.NODE_ENV }} >> .env
+          echo APP_PORT=${{ secrets.APP_PORT }} >> .env
+          echo DB_URL=${{ secrets.DB_URL }} >> .env
+          echo DB_USER=${{ secrets.DB_USER }} >> .env
+          echo DB_PASSWORD=${{ secrets.DB_PASSWORD }} >> .env
+          echo DB_PORT=${{ secrets.DB_PORT }} >> .env
+          echo DB_DATABASE=${{ secrets.DB_DATABASE }} >> .env
+
       - name: Set image tag
         id: vars
         run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
@@ -27,17 +38,6 @@ jobs:
       - name: Login to AWS ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
-
-      - name: create env file
-        run: |
-          touch .env
-          echo NODE_ENV=${{ secrets.NODE_ENV }} >> .env
-          echo APP_PORT=${{ secrets.APP_PORT }} >> .env
-          echo DB_URL=${{ secrets.DB_URL }} >> .env
-          echo DB_USER=${{ secrets.DB_USER }} >> .env
-          echo DB_PASSWORD=${{ secrets.DB_PASSWORD }} >> .env
-          echo DB_PORT=${{ secrets.DB_PORT }} >> .env
-          echo DB_DATABASE=${{ secrets.DB_DATABASE }} >> .env
 
       - name: Build image
         env:
