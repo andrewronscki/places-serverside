@@ -15,14 +15,14 @@ jobs:
 
       - name: create env file
         run: |
-          touch .env
-          echo NODE_ENV=${{ secrets.NODE_ENV }} >> .env
-          echo APP_PORT=${{ secrets.APP_PORT }} >> .env
-          echo DB_URL=${{ secrets.DB_URL }} >> .env
-          echo DB_USER=${{ secrets.DB_USER }} >> .env
-          echo DB_PASSWORD=${{ secrets.DB_PASSWORD }} >> .env
-          echo DB_PORT=${{ secrets.DB_PORT }} >> .env
-          echo DB_DATABASE=${{ secrets.DB_DATABASE }} >> .env
+          echo NODE_ENV=${{ secrets.NODE_ENV }} >> .env.staging
+          echo APP_PORT=${{ secrets.APP_PORT }} >> .env.staging
+          echo DB_URL=${{ secrets.DB_URL }} >> .env.staging
+          echo DB_USER=${{ secrets.DB_USER }} >> .env.staging
+          echo DB_PASSWORD=${{ secrets.DB_PASSWORD }} >> .env.staging
+          echo DB_PORT=${{ secrets.DB_PORT }} >> .env.staging
+          echo DB_DATABASE=${{ secrets.DB_DATABASE }} >> .env.staging
+          mv .env.staging .env
 
       - name: Set image tag
         id: vars
