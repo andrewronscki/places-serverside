@@ -29,7 +29,6 @@ Tabela de conteúdos
      * [Rodando o Backend (servidor)](#user-content--rodando-o-backend-servidor)
    * [Tecnologias](#-tecnologias)
      * [Server](#user-content-server--nodejs----typescript)
-   * [Contribuidores](#-contribuidores)
    * [Autor](#-autor)
    * [Licença](#user-content--licença)
 <!--te-->
@@ -107,18 +106,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 -   **[dotENV](https://github.com/motdotla/dotenv)**
 
 > Veja o arquivo  [package.json](https://github.com/andrewronscki/places-serverside/blob/main/package.json)
-
----
-
-## 👨‍💻 Contribuidores
-
-💚 Um super thanks 👏 para essa galera que fez esse produto sair do campo da ideia e entrar no ar :)
-
-<table>
-  <tr>
-    <td align="center"><a href="https://andrewronscki.com"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/32884775?v=4" width="100px;" alt=""/><br /><sub><b>André Wronscki</b></sub></a><br /><a href="https://rocketseat.com.br/" title="André Wronscki">👨‍🚀</a></td>
-  </tr>
-</table>
 
 ---
 
